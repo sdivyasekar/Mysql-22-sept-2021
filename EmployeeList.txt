@@ -1,0 +1,122 @@
+mysql> show databases;
+--------------
+show databases
+--------------
+
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> create database employee;
+--------------
+create database employee
+--------------
+
+Query OK, 1 row affected (0.03 sec)
+
+mysql> use employee;
+Database changed
+mysql> create table employeelist;
+--------------
+create table employeelist
+--------------
+
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table employeelist(id int,name varchar(10),dept varchar(15),yop int);
+--------------
+create table employeelist(id int,name varchar(10),dept varchar(15),yop int)
+--------------
+
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> insert into employeelist(1,"Divya","IT Dept",2020),(2,"Priya","IT Dept",2020),(3,"Janani","HR Dept",2020),(4,"Anu","Marketing",2020);
+--------------
+insert into employeelist(1,"Divya","IT Dept",2020),(2,"Priya","IT Dept",2020),(3,"Janani","HR Dept",2020),(4,"Anu","Marketing",2020)
+--------------
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,"Divya","IT Dept",2020),(2,"Priya","IT Dept",2020),(3,"Janani","HR Dept",2020)' at line 1
+mysql> ;
+ERROR: 
+No query specified
+
+mysql> insert into employeelist(1,"Divya","IT Dept",2020);
+--------------
+insert into employeelist(1,"Divya","IT Dept",2020)
+--------------
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,"Divya","IT Dept",2020)' at line 1
+mysql> insert into employeelist values(1,"Divya","IT Dept",2020),(2,"Priya","IT
+Dept",2020),(3,"Janani","HR Dept",2020),(4,"Anu","Marketing",2020);
+--------------
+insert into employeelist values(1,"Divya","IT Dept",2020),(2,"Priya","IT Dept",2020),(3,"Janani","HR Dept",2020),(4,"Anu","Marketing",2020)
+--------------
+
+Query OK, 4 rows affected (0.04 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from employeelist;
+--------------
+select * from employeelist
+--------------
+
++------+--------+-----------+------+
+| id   | name   | dept      | yop  |
++------+--------+-----------+------+
+|    1 | Divya  | IT Dept   | 2020 |
+|    2 | Priya  | IT Dept   | 2020 |
+|    3 | Janani | HR Dept   | 2020 |
+|    4 | Anu    | Marketing | 2020 |
++------+--------+-----------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employeelist where dept="IT Dept";
+--------------
+select * from employeelist where dept="IT Dept"
+--------------
+
++------+-------+---------+------+
+| id   | name  | dept    | yop  |
++------+-------+---------+------+
+|    1 | Divya | IT Dept | 2020 |
+|    2 | Priya | IT Dept | 2020 |
++------+-------+---------+------+
+2 rows in set (0.00 sec)
+
+mysql> select name and id from employeelist;
+--------------
+select name and id from employeelist
+
+--------------
+
++-------------+
+| name and id |
++-------------+
+|           0 |
+|           0 |
+|           0 |
+|           0 |
++-------------+
+4 rows in set, 4 warnings (0.00 sec)
+
+mysql> select name, id from employeelist;
+--------------
+select name, id from employeelist
+--------------
+
++--------+------+
+| name   | id   |
++--------+------+
+| Divya  |    1 |
+| Priya  |    2 |
+| Janani |    3 |
+| Anu    |    4 |
++--------+------+
+4 rows in set (0.00 sec)
+
